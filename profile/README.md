@@ -15,6 +15,26 @@ This project implements a production-style, self-healing customer care chatbot u
 - Infrastructure: Kubernetes Deployments/Services/Secrets/ConfigMaps/Jobs/CronJobs; NodePort for gateway and frontend
 - CI/CD: Per-service Docker build/push on GitHub Actions; deploy via `kubectl set image` on a self-hosted runner
 
+## Architecture Diagram
+```mermaid
+flowchart LR
+  U[User] --> F[Frontend (Nginx)]
+  F --> G[API Gateway (FastAPI)]
+  G --> B[Bot Service (FastAPI)]
+  G --> I[Interactions Service (FastAPI)]
+  B --> P[(Pinecone Index)]
+  B --> L[AWS Bedrock LLM]
+  I <--> DB[(PostgreSQL)]
+  T[Training Service (CronJob)] --> I
+  T --> P
+  T --> L
+
+  classDef svc fill:#E8F5FF,stroke:#3B82F6,stroke-width:1px;
+  classDef store fill:#F6F8FA,stroke:#999,stroke-width:1px;
+  class F,G,B,I,T svc;
+  class P,DB store;
+```
+
 ## Services
 
 ### 1) Frontend Service
