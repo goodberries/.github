@@ -1,6 +1,8 @@
-# Self-Healing ML Pipeline — Project Overview
+# Goodberries: Self-Healing ML Pipeline — Project Overview
 
 This project implements a production-style, self-healing customer care chatbot using microservices, Retrieval-Augmented Generation (RAG), feedback-driven improvement, and Kubernetes-first deployment. It showcases DevOps + MLOps practices: containerization, GitHub Actions CI/CD, secrets management, persistent data stores, and a nightly training loop.
+
+The name of the project is inspired from a spell in dnd5 which heals people :)
 
 ## High-level Architecture
 - Frontend Service (Nginx static site)
